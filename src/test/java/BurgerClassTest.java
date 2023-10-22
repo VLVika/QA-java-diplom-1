@@ -5,6 +5,12 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
+import praktikum.Ingredient;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static praktikum.IngredientType.SAUCE;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerClassTest {
@@ -29,9 +35,25 @@ public class BurgerClassTest {
         Mockito.verify(burger).setBuns(newBun);
     }
 
-    @Test
-    public void addIngredientCallRightValueTest(){
+    @Mock
+    Ingredient ingredient;
 
+    @Test
+    public void addIngredientCallOnceTest(){
+        burger.addIngredient(ingredient);
+        Mockito.verify(burger, Mockito.times(1)).addIngredient(ingredient);
+    }
+
+    @Test
+    public void removeIngredientCallOnceTest(){
+        burger.removeIngredient(5);
+        Mockito.verify(burger, Mockito.times(1)).removeIngredient(5);
+    }
+
+    @Test
+    public void removeIngredientCallRightValueTest(){
+        burger.removeIngredient(5);
+        Mockito.verify(burger).removeIngredient(5);
     }
 
 }
