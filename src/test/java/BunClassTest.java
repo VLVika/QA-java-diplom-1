@@ -11,14 +11,14 @@ public class BunClassTest {
 
 
     @Test
-    public void bunGetNameReturnWriteName() {
+    public void bunGetNameReturnRightNameTest() {
         Assert.assertEquals("Ошибка!! Метод возвращает не корректное значение!!", name, bun.getName());
 
     }
 
 
     @Test
-    public void bunGetPriceReturnWritePrice() {
+    public void bunGetPriceReturnRightPriceTest() {
         Assert.assertEquals("Ошибка!! Метод возвращает не корректное значение!!", price, bun.getPrice(), 0.01);
 
     }
