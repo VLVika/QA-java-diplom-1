@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -55,5 +56,18 @@ public class BurgerClassTest {
         burger.removeIngredient(5);
         Mockito.verify(burger).removeIngredient(5);
     }
+
+    @Test
+    public void moveIngredientCallOnceTest(){
+        burger.moveIngredient(1,0);
+        Mockito.verify(burger, Mockito.times(1)).moveIngredient(1,0);
+    }
+
+    @Test
+    public void moveIngredientCallRightValueTest(){
+        burger.moveIngredient(5,2);
+        Mockito.verify(burger).moveIngredient(5,2);
+    }
+
 
 }
