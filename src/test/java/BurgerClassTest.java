@@ -1,8 +1,8 @@
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
@@ -11,10 +11,13 @@ import praktikum.Ingredient;
 import java.util.ArrayList;
 import java.util.List;
 
+import static praktikum.IngredientType.FILLING;
 import static praktikum.IngredientType.SAUCE;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerClassTest {
+
+    List<Ingredient> ingredients_expected = new ArrayList<>();
 
     @Mock
     Burger burger = new Burger();
@@ -36,37 +39,65 @@ public class BurgerClassTest {
         Mockito.verify(burger).setBuns(newBun);
     }
 
-    @Mock
-    Ingredient ingredient;
+    @Spy
+    Ingredient ingredient = new Ingredient(FILLING, "ляляля", 500);
+
+    @Spy
+    Ingredient ingredientYam = new Ingredient(SAUCE, "вкусняшка", 100);
+
+    @Spy
+    Ingredient ingredientNew = new Ingredient(SAUCE, "ythgjj", 85);
+
+    @Spy
+    List<Ingredient> ingredients = new ArrayList<>();
+
 
     @Test
-    public void addIngredientCallOnceTest(){
+    public void addIngredientCallOnceTest() {
         burger.addIngredient(ingredient);
         Mockito.verify(burger, Mockito.times(1)).addIngredient(ingredient);
     }
 
     @Test
-    public void removeIngredientCallOnceTest(){
+    public void addIngredientCallRightValueTest() {
+        burger.addIngredient(ingredient);
+        Mockito.verify(burger).addIngredient(ingredient);
+    }
+
+    @Test
+    public void removeIngredientCallOnceTest() {
         burger.removeIngredient(5);
         Mockito.verify(burger, Mockito.times(1)).removeIngredient(5);
     }
 
     @Test
-    public void removeIngredientCallRightValueTest(){
-        burger.removeIngredient(5);
-        Mockito.verify(burger).removeIngredient(5);
+    public void moveIngredientCallRightValueTest() {
+        burger.moveIngredient(5, 2);
+        Mockito.verify(burger).moveIngredient(5, 2);
     }
 
-    @Test
-    public void moveIngredientCallOnceTest(){
-        burger.moveIngredient(1,0);
-        Mockito.verify(burger, Mockito.times(1)).moveIngredient(1,0);
-    }
+
+    @Spy
+    Burger newBurger = new Burger();
 
     @Test
-    public void moveIngredientCallRightValueTest(){
-        burger.moveIngredient(5,2);
-        Mockito.verify(burger).moveIngredient(5,2);
+    public void removeIngredientCallValueTest() {
+        newBurger.addIngredient(ingredient);
+        newBurger.addIngredient(ingredientNew);
+        newBurger.removeIngredient(0);
+        Mockito.verify(newBurger).removeIngredient(0);
+
+    }
+
+
+    @Test
+    public void moveIngredientCallValueTest() {
+        newBurger.addIngredient(ingredient);
+        newBurger.addIngredient(ingredientNew);
+        newBurger.addIngredient(ingredientYam);
+        newBurger.moveIngredient(1, 0);
+        Mockito.verify(newBurger).moveIngredient(1, 0);
+
     }
 
 

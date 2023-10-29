@@ -10,10 +10,8 @@ import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
-
-
 @RunWith(Parameterized.class)
-public class ParameterizedBurgerGetReceipt {
+public class ParameterizedBurgerGetReceiptTest {
 
     private final IngredientType ingrType;
     private final String name;
@@ -22,8 +20,8 @@ public class ParameterizedBurgerGetReceipt {
     private final String bunName;
     private final float allPrice;
 
-    public ParameterizedBurgerGetReceipt(IngredientType ingrType, String name, float price, String typeIngredients,
-                                         String bunName, float allPrice) {
+    public ParameterizedBurgerGetReceiptTest(IngredientType ingrType, String name, float price, String typeIngredients,
+                                             String bunName, float allPrice) {
         this.ingrType = ingrType;
         this.name = name;
         this.price = price;
