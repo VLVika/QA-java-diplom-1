@@ -27,8 +27,9 @@ public class IngredientTypeTest {
 
     @Test
     public void ingredientTypeReturnTrueValue() {
-        Assert.assertTrue("Ошибка!!! Реальный результат --->" + actual + "<---Не соответствует ожидаемому --->" + expected,
-                expected == actual.name());
+
+        Assert.assertEquals("Ошибка!!! Реальный результат --->" + actual + "<---Не соответствует ожидаемому --->", expected, actual.name());
+
     }
 
 }

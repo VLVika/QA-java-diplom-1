@@ -8,16 +8,12 @@ import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static praktikum.IngredientType.FILLING;
 import static praktikum.IngredientType.SAUCE;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerClassTest {
 
-    List<Ingredient> ingredients_expected = new ArrayList<>();
 
     @Mock
     Burger burger = new Burger();
@@ -48,8 +44,6 @@ public class BurgerClassTest {
     @Spy
     Ingredient ingredientNew = new Ingredient(SAUCE, "ythgjj", 85);
 
-    @Spy
-    List<Ingredient> ingredients = new ArrayList<>();
 
 
     @Test
